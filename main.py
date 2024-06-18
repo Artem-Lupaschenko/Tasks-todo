@@ -445,7 +445,6 @@ def add_statistic(
 # Функція для отримання користувача, який робить запит, на основі JWT токена
 def get_requesting_user(token, db):
     payload = verify_jwt(token.credentials)
-    print(payload)
     if payload:
         return db.query(User).filter(User.id == payload["id"]).first()
     return None

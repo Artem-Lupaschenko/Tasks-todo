@@ -128,7 +128,7 @@ class ClockManager {
 
   startTimer(func) {
     this.#clock.start();
-    this.#timer = setInterval(() => func(), 10);
+    this.#timer = setInterval(() => func(), 1000);
   }
 
   pauseTimer() {
