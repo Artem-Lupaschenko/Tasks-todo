@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Tasks To-Do</title>
+    <link rel="stylesheet" href="{{ url_for('public', path='style.css') }}">
+  </head>
+  <body>
+    <script defer type="module" src="{{ url_for('public', path='modules/globalVariables.js') }}"></script>
+    <script defer type="module" src="{{ url_for('public', path='modules/apiManager.js') }}"></script>
+		<script defer type="module" src="{{ url_for('public', path='modules/clockManager.js') }}"></script>
+		<script defer type="module" src="{{ url_for('public', path='modules/statisticManager.js') }}"></script>
+		<script defer type="module" src="{{ url_for('public', path='modules/taskManager.js') }}"></script>
+		<script defer type="module" src="{{ url_for('public', path='modules/userInterface.js') }}"></script>
+		<script defer type="module" src="{{ url_for('public', path='modules/userManager.js') }}"></script>
+		<script defer type="module" src="{{ url_for('public', path='script.js') }}"></script>
+
+    <div class="user-panel">
+      <button class="user-btn btn"></button>
+      <nav class="user-menu">
+        <ul class="user-menu-list"></ul>
+      </nav>
+      <span class="user-name"></span>
+    </div>
+		<div id="clock-container">
+			<div class="current-task-panel">
+				Оберіть задачу на виконання...
+			</div>
+			<div id="face">
+				<div id="clock-hand"></div>
+				<time-formatted id="clock" minute="numeric" second="numeric" data-clock-state="stopped"></time-formatted>
+			</div>
+			<div id="btns">
+				<button id="clock-start-btn" class="start-btn clock-btn btn">Почати</button>
+				<button class="pause-btn clock-btn btn" hidden>Пауза</button>
+				<button class="stop-btn clock-btn btn" hidden>Стоп</button>
+			</div>
+		</div>
+		<ul class="sidebar">
+			<button id="show-sidebar-btn" class="btn">></button>
+			<li class="sidebar-container">
+				<p>Час фокусування</p>
+				<div class="overall-time">
+					<span class="overall-hours">0</span>г <span class="overall-minutes">0</span>хв
+				</div>
+			</li>
+			<li class="sidebar-container">
+				<button id="add-task-btn" class="container-btn sidebar-btn btn"></button>
+				<p>Задачі</p>
+				<ul id="tasks-board"></ul>
+			</li>
+			<li class="sidebar-container">
+				<p>Статистика часу задач</p>
+				<ul id="statistics-board"></ul>
+			</li>
+		</ul>
+		<div class="popup-container">
+			<div class="popup">
+				<button class="close-popup-btn btn"></button>
+				<div class="popup-content-container"></div>
+        <div class="popup-alert"></div>
+			</div>
+		</div>
+  </body>
+</html>

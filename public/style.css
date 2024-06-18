@@ -1,0 +1,491 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, h1, h2, h3, p, ul, li, button {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font: 16px Arial;
+}
+
+body {
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem;
+	overflow: hidden;
+	background: url("imgs/les_tuman_derevia_132037_3840x2400.jpg") no-repeat;
+	background-color:black;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	box-shadow: inset 0 0 100px 100px black;
+	color: white;
+}
+
+ul {
+	list-style: none;
+}
+
+#clock-container {
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 100%;
+	max-width: 30rem
+}
+
+#face {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 30rem;
+	min-height: 30rem;
+	border: 16px dotted grey;
+	border-radius: 50%;
+	background-color: transparent;
+	user-select: none;
+}
+
+#clock-hand {
+	position: absolute;
+	top: 0;
+	width: 5px;
+	height: 480px;
+	margin-top: -16px;
+  border-radius: 50px;
+  transform: rotateZ(0deg);
+	background: rgb(0,0,0);
+	background: linear-gradient(0deg, rgba(0,0,0,0) 80%, rgba(255,0,0,1) 100%);
+}
+
+#clock {
+	z-index: 1;
+	font-size: 8rem;
+}
+
+#btns {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.btn {
+	cursor: pointer;
+	border-radius: 2.5rem;
+}
+
+.clock-btn {
+	width: 10rem;
+	padding: 0.75rem 0;
+	background-color: white;
+	font: inherit;
+	bottom: 0;
+}
+
+.user-panel {
+	position: relative;
+	display: flex;
+	width: 300px;
+}
+
+.user-name {
+	display: block;
+	margin: 0 10px;
+	max-width: 200px;
+	line-height: 1.5rem;
+	word-wrap: break-word;
+}
+
+.user-btn {
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 0px;
+	background: url("icons/user.png") no-repeat;
+}
+
+.user-menu {
+	position: absolute;
+	top: 1.5rem;
+	left: 0;
+	display: none;
+	min-width: 70px;
+	border: 1px solid black;
+	background-color: white;
+	color: black;
+}
+
+.user-menu-item {
+	width: 100%;
+	border-bottom: 1px solid black;
+	border-radius: 10px;
+}
+
+.user-menu-item:last-child {
+	border-bottom: none;
+}
+
+.user-menu-item > .btn {
+	width: 100%;
+	padding: 10px 5px;
+	border-radius:  0;
+	background-color: white;
+	font: inherit;
+}
+
+.user-menu-item > .btn:hover {
+	background-color: lightgrey;
+}
+
+.user-menu-item > .btn:focus {
+	background-color: rgb(160, 160, 160);
+}
+
+.delete-user-btn {
+	color: red;
+}
+
+.current-task-panel {
+	position: relative;
+	align-self: center;
+	width: 70%;
+	padding: 0.75rem;
+	border-radius: 2rem;
+	text-align: center;
+	background-color: rgba(34, 34, 34, 0.9);	
+	color: gray;
+	
+}
+
+.current-task.task {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: start;
+	background-color: white;
+	color: black;
+}
+
+.current-task .task-name {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/* хром, сафари */
+.sidebar::-webkit-scrollbar { width: 0; }
+
+.sidebar {
+	align-self: flex-start;
+	left: 0;
+	display: block;
+	width: 30em;
+	height: 100%;
+	overflow: scroll;
+	transition: width 0.4s;
+	/* background-color: grey; */
+}
+
+#show-sidebar-btn {
+	position: fixed;
+	top: 50%;
+	right: 0.5rem;
+	display: block;
+	margin-top: -1.25rem;
+	width: 1rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	background-color: rgba(34, 34, 34, 0.9);
+	color: inherit;
+}
+
+.hidden-sidebar {
+	width: 0;
+}
+
+.sidebar-container {
+	min-width: 30em;
+	margin-bottom: 10px;
+	padding: 24px;
+	border-radius: 10px;
+	background-color: rgba(34, 34, 34, 0.9);	
+}
+
+.sidebar-container > p:first-of-type {
+	margin-bottom: 15px;
+	padding-left: 10px;
+	border-left: 3px solid red;
+}
+
+.sidebar-btn {
+	height: 1.3rem;
+	width: 1.3rem;
+	background-color: rgb(115, 0, 0);
+	background-position: 50% 50%;
+	background-size: 1.05rem;
+	background-repeat: no-repeat;
+	color: red;
+}
+
+.overall-hours,
+.overall-minutes {
+	color: red;
+}
+
+.overall-time > span {
+	font-size: 2rem;
+}
+
+.task {
+	position: relative;
+	display: flex;
+	margin-bottom: 5px;
+	padding: 12px;
+	border-radius: 10px;
+	background-color: rgb(54, 54, 54);
+}
+
+.done {
+	text-decoration: line-through;
+	color: grey;
+}
+
+.done .start-btn {
+	background-color: rgba(115, 0, 0, 0.5);
+	cursor: default;
+}
+
+.control-panel {
+	display: flex;
+	width: 15%;
+	justify-content: space-evenly;
+	align-items: center;
+	z-index: 2;
+}
+
+.edit-panel {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	justify-content: end;
+	align-items: center;
+	border-radius: inherit;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+	z-index: 1;
+}
+
+.edit-panel button {
+	margin-right: 12px;
+}
+
+.task:hover .edit-panel {
+	display: flex;
+}
+
+.checkbox {
+	border: 1px solid rgb(115, 115, 115);
+	background-color: rgba(115, 115, 115, 0.3);
+}
+
+.task.done .checkbox {
+	border: rgb(54, 166, 54);
+	background-image:url("icons/check.svg");
+	background-repeat: no-repeat;
+	background-color: rgb(54, 166, 54);
+}
+
+.task .start-btn {
+	background-image: url("icons/triangle.png");	
+}
+
+.task.going .start-btn {
+	background-image: url("icons/clock.svg");
+	background-repeat: no-repeat;
+	background-position: 0;
+	background-size: 100%;
+}
+
+.task .edit-btn {
+	background-image: url("icons/edit.png");	
+}
+
+.task .remove-btn {
+	background-image: url("icons/remove.png");	
+}
+
+.task-info {
+	width: 80%;
+	margin-left: 5%;
+	display: flex;
+	flex-flow: row wrap;
+	word-wrap:normal;
+}
+
+.task-name {
+	width: 100%;
+	word-wrap: break-word;
+}
+
+.task-pomodoro,
+.task-date {
+	color: gray;
+	font-size: 0.9rem;
+}
+
+.task-pomodoro::after {
+	content: "";
+	margin-left: 2px;
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	border-radius: 50%;
+	background-color: lightgrey;
+}
+
+.done-pomodoro {
+	color: red;
+}
+
+.done-pomodoro::after {
+	background-color: red;
+}
+
+.going-pomodoro {
+	transition-property: background-color;
+}
+
+.going-pomodoro::after {
+	animation: 1s linear 0s infinite alternate blinking;
+}
+
+@keyframes blinking {
+  from {
+    background-color: lightgrey;
+  }
+  to {
+    background-color: red;
+  }
+}
+
+.task-date {
+	margin-left: 10px;
+}
+
+#statistics-board .task-info{
+	margin: 0;
+	border-right: 2px solid red;
+}
+
+.task-time {
+	width: 20%;
+	text-align: center;
+	word-wrap: break-word;
+}
+
+.task-time > span {
+	font-size: 1.1rem;
+}
+
+.container-btn {
+	float: right;
+}
+
+#add-task-btn {
+	background-image: url("icons/plus.png");
+}
+
+.popup-container::-webkit-scrollbar { width: 0; }
+
+.popup-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 100%;
+	padding: 3rem 0;
+	display: none;
+	background-color: rgba(34, 34, 34, 0.9);
+	font-size: 1.3rem;
+	overflow: scroll;
+}
+
+.popup {
+	position: relative;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 36px;
+	border-radius: 10px;
+	background-color: white;
+	color: black;
+}
+
+.popup-content-container > h2 {
+	margin-bottom: 2rem;
+}
+
+.popup-content-container > form {
+	display: flex;
+	flex-direction: column;
+}
+
+.popup-content-container input {
+	width: 100%;
+	height: 2em;
+	margin-bottom: 1em;
+	padding: 0 10px;
+	font-size: inherit;
+}
+
+.popup-content-container label {
+	line-height: 1.5em;
+}
+
+.popup-content-container .popup-btn {
+	align-self: end;
+	min-width: 150px;
+	margin-bottom: 1em;
+	padding: 0.5em 1em;
+	font: inherit;
+}
+
+.popup-content-container > form[name="delete-user-form"] {
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.popup-content-container > form[name="delete-user-form"] > .btn:last-child {
+	background-color: rgb(115, 0, 0);
+	color: red;
+}
+
+.popup-alert {
+	display: none;
+	width: 100%;
+	padding: 10px 20px;
+	color: red;
+	text-align: center;
+	word-wrap: break-word;
+}
+
+.close-popup-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 2.5em;
+	height: 2.5em;
+	background: url("icons/cross.png") no-repeat;
+	background-size: 100%;
+}
+
