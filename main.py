@@ -118,7 +118,7 @@ def edit_task(
     if data["name"]: 
         task.name = data["name"]
     
-    task_date = datetime.strptime(data["date"], "%Y-%м-%d").date()
+    task_date = datetime.strptime(data["date"], "%Y-%m-%d").date()
     today_date = datetime.today().date()
     
     if task_date >= today_date:
